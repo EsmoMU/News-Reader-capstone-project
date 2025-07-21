@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
-console.log("API_KEY:", process.env.API_KEY);
+// console.log("API_KEY:", process.env.API_KEY);
 
 const router = express.Router();
 
