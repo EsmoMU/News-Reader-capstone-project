@@ -1,4 +1,5 @@
 import express from "express";
+
 import newsRouter from "./routes/news/news.js";
 import usersRouter from "./routes/users/users.js";
 import queriesRouter from "./routes/queries/queries.js";

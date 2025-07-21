@@ -1,5 +1,11 @@
 backend/node_modules
 frontend/node_modules
-queries.json
+backend/package-lock.json
 frontend/package-lock.json
-backendend/package-lock.json
+backend/.env
+
+*.log
+
+.DS_Store
+
+queries.json
