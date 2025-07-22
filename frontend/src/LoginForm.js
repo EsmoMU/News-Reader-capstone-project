@@ -40,7 +40,7 @@ export function LoginForm(params) {
             Password:{" "}
           </label>
           <input
-            type="text"
+            type="password"
             size={10}
             id="password"
             name="password"
