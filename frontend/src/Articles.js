@@ -34,37 +34,50 @@ export function Articles(params) {
           <br />
         </div>
       </div>
-      <ol>
-        {articles.map((item, idx) => {
-          if (item) {
-            if (item.title) {
-              if (item.title === "[Removed]") {
-                return <li key={idx}>Was Removed</li>;
+      <div
+        style={{
+          height: "250px",
+          width: "100%",
+          maxWidth: "350px",
+          overflowY: "auto",
+          overflowX: "hidden",
+          border: "1px solid #ccc",
+          boxSizing: "border-box",
+          margin: "0 auto",
+        }}
+      >
+        <ol style={{ margin: 0, paddingLeft: "2em" }}>
+          {articles.map((item, idx) => {
+            if (item) {
+              if (item.title) {
+                if (item.title === "[Removed]") {
+                  return <li key={idx}>Was Removed</li>;
+                }
+                let trimTitle = item.title.substring(0, 100);
+                return (
+                  <li
+                    key={idx}
+                    style={{
+                      fontSize: "0.9em",
+                      fontFamily: "Arial, Helvetica, sans-serif",
+                      marginBottom: "4px",
+                    }}
+                  >
+                    {trimTitle}
+                    <a href={item.url} target="_blank" rel="noreferrer">
+                      &nbsp;Link
+                    </a>
+                  </li>
+                );
+              } else {
+                return <li key={idx}>No Title</li>;
               }
-              let trimTitle = item.title.substring(0, 60);
-              return (
-                <li
-                  key={idx}
-                  style={{
-                    fontSize: "0.9em",
-                    fontFamily: "Arial, Helvetica, sans-serif",
-                    marginBottom: "4px",
-                  }}
-                >
-                  {trimTitle}
-                  <a href={item.url} target="_blank" rel="noreferrer">
-                    &nbsp;Link
-                  </a>
-                </li>
-              );
             } else {
-              return <li key={idx}>No Title</li>;
+              return <li key={1}>No Item</li>;
             }
-          } else {
-            return <li key={1}>No Item</li>;
-          }
-        })}
-      </ol>
+          })}
+        </ol>
+      </div>
     </div>
   );
 }
