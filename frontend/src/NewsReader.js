@@ -16,6 +16,16 @@ export function NewsReader() {
   const urlNews = "/news";
   const urlQueries = "/queries";
   const urlUsersAuth = "/users/authenticate";
+  const cannedQueries = [
+    {
+      queryName: "Top Headlines",
+      q: "headlines",
+      language: "en",
+      pageSize: 10,
+    },
+    { queryName: "Tech News", q: "technology", language: "en", pageSize: 10 },
+    // Add more canned queries as needed
+  ];
 
   useEffect(() => {
     getNews(query);
@@ -148,6 +158,9 @@ export function NewsReader() {
     }
   }
 
+  // Choose which query list to show
+  const queryList = currentUser ? savedQueries : cannedQueries;
+
   return (
     <div>
       <div>
@@ -162,17 +175,21 @@ export function NewsReader() {
         <section className="parent">
           <div className="box">
             <span className="title">Query Form</span>
-            <QueryForm
-              currentUser={currentUser}
-              setFormObject={setQueryFormObject}
-              formObject={queryFormObject}
-              submitToParent={onFormSubmit}
-            />
+            {/* Only show QueryForm if user is logged in */}
+            {currentUser && (
+              <QueryForm
+                currentUser={currentUser}
+                setFormObject={setQueryFormObject}
+                formObject={queryFormObject}
+                submitToParent={onFormSubmit}
+              />
+            )}
           </div>
           <div className="box">
             <span className="title">Saved Queries</span>
+            {/* Show either savedQueries or cannedQueries depending on login state */}
             <SavedQueries
-              savedQueries={savedQueries}
+              savedQueries={queryList}
               selectedQueryName={query.queryName}
               onQuerySelect={onSavedQuerySelect}
             />
