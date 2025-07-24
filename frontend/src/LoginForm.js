@@ -17,6 +17,7 @@ export function LoginForm(params) {
         boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
         maxWidth: "320px",
         margin: "0 auto",
+        border: "1.5px solid #374151",
       }}
     >
       <div style={{ marginBottom: "10px" }}>
