@@ -100,6 +100,17 @@ export function NewsReader() {
     setQuery(selectedQuery);
   }
 
+  function resetSavedQueries() {
+    const confirmReset = window.confirm(
+      "Are you sure you want to erase the list?"
+    );
+    if (confirmReset) {
+      const resetList = [{ ...exampleQuery }];
+      saveQueryList(resetList);
+      setSavedQueries(resetList);
+    }
+  }
+
   function currentUserMatches(user) {
     if (currentUser) {
       if (currentUser.user) {
@@ -192,6 +203,8 @@ export function NewsReader() {
               savedQueries={queryList}
               selectedQueryName={query.queryName}
               onQuerySelect={onSavedQuerySelect}
+              onReset={resetSavedQueries}
+              currentUser={currentUser}
             />
           </div>
           <div className="box">

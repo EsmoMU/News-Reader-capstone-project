@@ -29,6 +29,14 @@ export function SavedQueries(params) {
           <li>No Saved Queries, Yet!</li>
         )}
       </ul>
+      {/* Only show reset button when user is logged in */}
+      {params.currentUser && (
+        <div style={{ textAlign: "center", marginTop: "10px" }}>
+          <button type="button" onClick={params.onReset}>
+            Reset
+          </button>
+        </div>
+      )}
     </div>
   );
 }
