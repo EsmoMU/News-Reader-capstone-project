@@ -64,12 +64,7 @@ export function NewsReader() {
           setCurrentUser({ ...credentials });
           setCredentials({ user: "", password: "" });
         } else {
-          alert(
-            "Error during authentication! " +
-              credentials.user +
-              "/" +
-              credentials.password
-          );
+          alert("Error during authentication! ");
           setCurrentUser(null);
         }
       } catch (error) {
