@@ -6,49 +6,103 @@ export function LoginForm(params) {
   };
 
   return (
-    <div className="box" style={{ maxWidth: "unset" }}>
-      <button onClick={params.login}>
+    <form
+      style={{
+        fontFamily:
+          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        color: "#374151",
+        backgroundColor: "#fafafa",
+        borderRadius: "8px",
+        padding: "16px",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+        maxWidth: "320px",
+        margin: "0 auto",
+      }}
+    >
+      <div style={{ marginBottom: "10px" }}>
+        <label
+          htmlFor="user"
+          style={{
+            fontWeight: "600",
+            color: "#1f2937",
+            fontSize: "1em",
+          }}
+        >
+          Username:
+        </label>
+        <input
+          id="user"
+          type="text"
+          value={params.credentials.user}
+          onChange={e =>
+            params.setCredentials({
+              ...params.credentials,
+              user: e.target.value,
+            })
+          }
+          style={{
+            width: "100%",
+            padding: "6px",
+            borderRadius: "6px",
+            border: "1px solid #e0e0e0",
+            fontSize: "0.95em",
+            marginTop: "4px",
+            fontFamily: "inherit",
+          }}
+        />
+      </div>
+      <div style={{ marginBottom: "10px" }}>
+        <label
+          htmlFor="password"
+          style={{
+            fontWeight: "600",
+            color: "#1f2937",
+            fontSize: "1em",
+          }}
+        >
+          Password:
+        </label>
+        <input
+          id="password"
+          type="password"
+          value={params.credentials.password}
+          onChange={e =>
+            params.setCredentials({
+              ...params.credentials,
+              password: e.target.value,
+            })
+          }
+          style={{
+            width: "100%",
+            padding: "6px",
+            borderRadius: "6px",
+            border: "1px solid #e0e0e0",
+            fontSize: "0.95em",
+            marginTop: "4px",
+            fontFamily: "inherit",
+          }}
+        />
+      </div>
+      <button
+        type="button"
+        onClick={params.login}
+        style={{
+          backgroundColor: "#2563eb",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          padding: "8px 16px",
+          fontSize: "1em",
+          fontWeight: "500",
+          cursor: "pointer",
+          fontFamily: "inherit",
+          transition: "background-color 0.2s ease",
+        }}
+        onMouseOver={e => (e.target.style.backgroundColor = "#1d4ed8")}
+        onMouseOut={e => (e.target.style.backgroundColor = "#2563eb")}
+      >
         {params.currentUser ? "Logout" : "Login"}
       </button>
-      &nbsp;User:{" "}
-      <span style={{ fontWeight: "bold" }}>
-        {params.currentUser ? params.currentUser.user : "not logged in"}
-      </span>
-      <div className={params.currentUser ? "hidden" : "visible"}>
-        <div>
-          <label
-            htmlFor="user"
-            style={{ display: "inline-block", width: "80px" }}
-          >
-            User:{" "}
-          </label>
-          <input
-            type="text"
-            size={10}
-            id="user"
-            name="user"
-            value={params.credentials.user}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="password"
-            style={{ display: "inline-block", width: "80px" }}
-          >
-            Password:{" "}
-          </label>
-          <input
-            type="password"
-            size={10}
-            id="password"
-            name="password"
-            value={params.credentials.password}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-    </div>
+    </form>
   );
 }

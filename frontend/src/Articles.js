@@ -16,19 +16,64 @@ export function Articles(params) {
   }
   return (
     <div>
-      Query: {queryName}
-      <br />
-      Count: {articleCount}
+      <div
+        style={{
+          fontSize: "1.15em",
+          fontWeight: "600",
+          color: "#1f2937",
+          fontFamily:
+            "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+          marginBottom: "4px",
+        }}
+      >
+        Query: {queryName}
+      </div>
+      <div
+        style={{
+          fontSize: "0.95em",
+          color: "#6b7280",
+          fontFamily:
+            "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+          marginBottom: "8px",
+        }}
+      >
+        Count: {articleCount}
+      </div>
       <div style={{ textAlign: "center" }}>
-        <button type="button" onClick={displayDetailsButton}>
+        <button
+          type="button"
+          onClick={displayDetailsButton}
+          style={{
+            backgroundColor: "#2563eb",
+            color: "white",
+            border: "none",
+            borderRadius: "6px",
+            padding: "6px 14px",
+            fontSize: "0.95em",
+            fontWeight: "500",
+            fontFamily:
+              "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            marginBottom: "6px",
+            cursor: "pointer",
+            transition: "background-color 0.2s ease",
+          }}
+        >
           {queryDetailsbutton}
         </button>
         <div
           className={
             queryDetailsbutton == "Hide Details" ? "visible" : "hidden"
           }
+          style={{
+            fontSize: "0.92em",
+            color: "#374151",
+            fontFamily:
+              "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            margin: "8px 0",
+          }}
         >
-          Query Text: {params.query.q} <br />
+          Query Text: <span style={{ color: "#059669" }}>{params.query.q}</span>{" "}
+          <br />
           Language: {params.query.language} <br />
           Page Size: {params.query.pageSize}
           <br />
@@ -41,39 +86,80 @@ export function Articles(params) {
           maxWidth: "350px",
           overflowY: "auto",
           overflowX: "hidden",
-          border: "1px solid #ccc",
+          border: "1px solid #e0e0e0",
           boxSizing: "border-box",
           margin: "0 auto",
+          backgroundColor: "#fafafa",
+          borderRadius: "8px",
         }}
       >
-        <ol style={{ margin: 0, paddingLeft: "2em" }}>
+        <ol
+          style={{
+            margin: 0,
+            paddingLeft: "2em",
+            fontFamily:
+              "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+          }}
+        >
           {articles.map((item, idx) => {
             if (item) {
               if (item.title) {
                 if (item.title === "[Removed]") {
-                  return <li key={idx}>Was Removed</li>;
+                  return (
+                    <li
+                      key={idx}
+                      style={{
+                        color: "#ef4444",
+                        fontStyle: "italic",
+                      }}
+                    >
+                      Was Removed
+                    </li>
+                  );
                 }
                 let trimTitle = item.title.substring(0, 100);
                 return (
                   <li
                     key={idx}
                     style={{
-                      fontSize: "0.9em",
-                      fontFamily: "Arial, Helvetica, sans-serif",
+                      fontSize: "0.95em",
+                      fontFamily:
+                        "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                       marginBottom: "4px",
+                      color: "#374151",
                     }}
                   >
                     {trimTitle}
-                    <a href={item.url} target="_blank" rel="noreferrer">
-                      &nbsp;Link
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        color: "#2563eb",
+                        textDecoration: "underline",
+                        marginLeft: "6px",
+                      }}
+                    >
+                      Link
                     </a>
                   </li>
                 );
               } else {
-                return <li key={idx}>No Title</li>;
+                return (
+                  <li
+                    key={idx}
+                    style={{ color: "#9ca3af", fontStyle: "italic" }}
+                  >
+                    No Title
+                  </li>
+                );
               }
             } else {
-              return <li key={1}>No Item</li>;
+              return (
+                <li key={1} style={{ color: "#9ca3af", fontStyle: "italic" }}>
+                  No Item
+                </li>
+              );
             }
           })}
         </ol>

@@ -173,7 +173,14 @@ export function NewsReader() {
   const queryList = currentUser ? savedQueries : cannedQueries;
 
   return (
-    <div>
+    <div
+      style={{
+        fontFamily:
+          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        backgroundColor: "#f3f4f6",
+        minHeight: "100vh",
+      }}
+    >
       <div>
         <LoginForm
           login={login}
@@ -183,9 +190,39 @@ export function NewsReader() {
         />
       </div>
       <div>
-        <section className="parent">
-          <div className="box">
-            <span className="title">Query Form</span>
+        <section
+          className="parent"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "18px",
+            justifyContent: "center",
+            marginTop: "18px",
+          }}
+        >
+          <div
+            className="box"
+            style={{
+              backgroundColor: "#fafafa",
+              borderRadius: "10px",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+              padding: "16px",
+              minWidth: "340px",
+            }}
+          >
+            <span
+              className="title"
+              style={{
+                fontSize: "1.15em",
+                fontWeight: "600",
+                color: "#1f2937",
+                marginBottom: "8px",
+                display: "block",
+                fontFamily: "inherit",
+              }}
+            >
+              Query Form
+            </span>
             {/* Only show QueryForm if user is logged in */}
             {currentUser && (
               <QueryForm
@@ -196,9 +233,29 @@ export function NewsReader() {
               />
             )}
           </div>
-          <div className="box">
-            <span className="title">Saved Queries</span>
-            {/* Show either savedQueries or cannedQueries depending on login state */}
+          <div
+            className="box"
+            style={{
+              backgroundColor: "#fafafa",
+              borderRadius: "10px",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+              padding: "16px",
+              minWidth: "340px",
+            }}
+          >
+            <span
+              className="title"
+              style={{
+                fontSize: "1.15em",
+                fontWeight: "600",
+                color: "#1f2937",
+                marginBottom: "8px",
+                display: "block",
+                fontFamily: "inherit",
+              }}
+            >
+              Saved Queries
+            </span>
             <SavedQueries
               savedQueries={queryList}
               selectedQueryName={query.queryName}
@@ -207,8 +264,29 @@ export function NewsReader() {
               currentUser={currentUser}
             />
           </div>
-          <div className="box">
-            <span className="title">Articles List</span>
+          <div
+            className="box"
+            style={{
+              backgroundColor: "#fafafa",
+              borderRadius: "10px",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+              padding: "16px",
+              minWidth: "340px",
+            }}
+          >
+            <span
+              className="title"
+              style={{
+                fontSize: "1.15em",
+                fontWeight: "600",
+                color: "#1f2937",
+                marginBottom: "8px",
+                display: "block",
+                fontFamily: "inherit",
+              }}
+            >
+              Articles List
+            </span>
             <Articles query={query} data={data} />
           </div>
         </section>

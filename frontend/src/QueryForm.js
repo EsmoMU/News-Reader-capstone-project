@@ -30,7 +30,19 @@ export function QueryForm(params) {
   }
 
   return (
-    <div>
+    <form
+      style={{
+        fontFamily:
+          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        color: "#374151",
+        backgroundColor: "#fafafa",
+        borderRadius: "8px",
+        padding: "16px",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+        maxWidth: "340px",
+        margin: "0 auto",
+      }}
+    >
       <div
         className={currentUserIsAdmin() ? "visible" : "hidden"}
         style={{ border: "solid black 1px" }}
@@ -67,33 +79,87 @@ export function QueryForm(params) {
         </div>
       </div>
 
-      <form>
-        <div>
-          <label htmlFor="queryName">Query Name: </label>
-          <input
-            type="text"
-            size={10}
-            id="queryName"
-            name="queryName"
-            value={params.formObject.queryName}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="q">Query Text: </label>
-          <input
-            type="text"
-            size={10}
-            id="q"
-            name="q"
-            value={params.formObject.q}
-            onChange={handleChange}
-          />
-        </div>
-        <span style={{ display: "block", backgroundColor: "#eee" }}>
-          <input type="button" value="Submit" onClick={onSubmitClick} />
-        </span>
-      </form>
-    </div>
+      <div style={{ marginBottom: "10px" }}>
+        <label
+          htmlFor="queryName"
+          style={{
+            fontWeight: "600",
+            color: "#1f2937",
+            fontSize: "1em",
+          }}
+        >
+          Query Name:
+        </label>
+        <input
+          id="queryName"
+          type="text"
+          value={params.formObject.queryName}
+          onChange={e =>
+            params.setFormObject({
+              ...params.formObject,
+              queryName: e.target.value,
+            })
+          }
+          style={{
+            width: "100%",
+            padding: "6px",
+            borderRadius: "6px",
+            border: "1px solid #e0e0e0",
+            fontSize: "0.95em",
+            marginTop: "4px",
+            fontFamily: "inherit",
+          }}
+        />
+      </div>
+      <div style={{ marginBottom: "10px" }}>
+        <label
+          htmlFor="q"
+          style={{
+            fontWeight: "600",
+            color: "#1f2937",
+            fontSize: "1em",
+          }}
+        >
+          Search Term:
+        </label>
+        <input
+          id="q"
+          type="text"
+          value={params.formObject.q}
+          onChange={e =>
+            params.setFormObject({ ...params.formObject, q: e.target.value })
+          }
+          style={{
+            width: "100%",
+            padding: "6px",
+            borderRadius: "6px",
+            border: "1px solid #e0e0e0",
+            fontSize: "0.95em",
+            marginTop: "4px",
+            fontFamily: "inherit",
+          }}
+        />
+      </div>
+      <button
+        type="button"
+        onClick={() => params.submitToParent(params.formObject)}
+        style={{
+          backgroundColor: "#059669",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          padding: "8px 16px",
+          fontSize: "1em",
+          fontWeight: "500",
+          cursor: "pointer",
+          fontFamily: "inherit",
+          transition: "background-color 0.2s ease",
+        }}
+        onMouseOver={e => (e.target.style.backgroundColor = "#047857")}
+        onMouseOut={e => (e.target.style.backgroundColor = "#059669")}
+      >
+        Submit
+      </button>
+    </form>
   );
 }
